@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/*网站公用样式*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0 none;
+    /*font: inherit;*/
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+ol, ul ,li{
+    list-style: outside none none;
+}
+img {
+    display: block;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+i,em{
+    font-style: normal;
+}
+
+body, button, input, select, textarea {
+    font: 16px/1.5;
+	  font-family:"微软雅黑";
+    background: #f4f4f4;
+}
+/*默认属性*/
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+    /*text-decoration: underline;*/
+}
+
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+:focus { outline:0; }
+
