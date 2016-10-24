@@ -81,4 +81,24 @@ class PublicController extends \Think\Controller {
         $verify->entry(1);
     }
 
+
+    /*联系我们 标记阅*/
+    public function doRead()
+    {
+        $id = I('get.id');
+        if (empty($id)) {
+            $this->error('数据异常','',1);
+        }
+        $Model = D('notes');
+        $data['status']='1';
+        $res = $Model->where('id='.$id)->save($data);
+        if(empty($res)){
+            $this->error('状态更新失败',U('Index/index'),1);
+        }else{
+            $this->success('状态更新成功',U('Index/index'),1);
+
+        }
+    }
+
+
 }

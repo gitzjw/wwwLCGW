@@ -12,16 +12,16 @@ namespace Addons\DevTeam;
 use Common\Controller\Addon;
 
 /**
- * 开发团队信息插件
- * @author thinkphp
+ * 首页联系信息插件
+ * @author by zjw
  */
 
     class DevTeamAddon extends Addon{
 
         public $info = array(
             'name'=>'DevTeam',
-            'title'=>'开发团队信息',
-            'description'=>'开发团队成员信息',
+            'title'=>'联系我们',
+            'description'=>'联系我们信息',
             'status'=>1,
             'author'=>'lechong',
             'version'=>'0.1'
@@ -39,7 +39,14 @@ use Common\Controller\Addon;
         public function AdminIndex($param){
             $config = $this->getConfig();
             $this->assign('addons_config', $config);
-            if($config['display'])
+            $Model = D('notes');
+            if($config['display']) {
+                $data = $Model->where('status=0')->order('time desc')->limit(50)->select();
+                foreach ($data as $k=>$v){
+                    $data[$k]['time'] = date("Y-m-d H:i", $v['time']);
+                }
+                $this->assign('data', $data);
                 $this->display('widget');
+            }
         }
     }
