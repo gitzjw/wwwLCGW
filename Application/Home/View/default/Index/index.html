@@ -7,13 +7,13 @@
     <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="bookmark">
 </head>
-<link href="/Public/Home/css/common.css" rel="stylesheet" type="text/css" />
-<link href="/Public/Home/css/index.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__//Public/Home/css/common.css" rel="stylesheet" type="text/css" />
+<link href="__ROOT__//Public/Home/css/index.css" rel="stylesheet" type="text/css" />
 
 <body>
 <div class="header">
     <div class="box mr">
-        <a href="."><img class="logo" src="/Public/Home/images/logo.png"></a>
+        <a href="."><img class="logo" src="__ROOT__/Public/Home/images/logo.png"></a>
         <ul class="nav">
             <a data-title="#home">
                 <li class="ShowOn">首页<s></s></li>
@@ -35,7 +35,7 @@
 </div>
 <div class="banner flexslider">
     <div class="img">
-        <li><img src="/Public/Home/images/banner.jpg"></li>
+        <li><img src="__ROOT__/Public/Home/images/banner.jpg"></li>
     </div>
 </div>
 
@@ -104,25 +104,25 @@
     </div>
     </a>-->
                 <div class="listImg">
-                    <img class="bud" src="/Public/Home/images/3.jpg">
+                    <img class="bud" src="__ROOT__/Public/Home/images/3.jpg">
                     <div class="tage">
-                        <img src="/Public/Home/images/4.jpg">
+                        <img src="__ROOT__/Public/Home/images/4.jpg">
                         <a target="_blank" class="chinapet" href="http://bbs.chinapet.com"></a>
                         <a target="_blank" class="movshow" href="http://www.movshow.com/"></a>
                     </div>
                     <s></s>
                 </div>
                 <div class="listImg">
-                    <img class="bud" src="/Public/Home/images/2.jpg">
+                    <img class="bud" src="__ROOT__/Public/Home/images/2.jpg">
                     <div class="tage">
-                        <a target="_blank" href="http://www.weibaquan.com"><img  src="/Public/Home/images/6.jpg"></a>
+                        <a target="_blank" href="http://www.weibaquan.com"><img  src="__ROOT__/Public/Home/images/6.jpg"></a>
                     </div>
                     <s></s>
                 </div>
                 <div style="margin-right: 0;" class="listImg">
-                    <img class="bud" src="/Public/Home/images/1.jpg">
+                    <img class="bud" src="__ROOT__/Public/Home/images/1.jpg">
                     <div class="tage">
-                        <img src="/Public/Home/images/5.jpg">
+                        <img src="__ROOT__/Public/Home/images/5.jpg">
                         <a target="_blank" class="qpet" href="https://qpet.taobao.com"></a>
                         <a target="_blank" class="treepet" href="https://treepet.taobao.com"></a>
                     </div>
@@ -139,7 +139,7 @@
                 <div class="brand">我们在做什么？
                     <br /><span>WHAT WE ARE DOING?</span></div>
             </div>
-            <img class="head" src="/Public/Home/images/head.png">
+            <img class="head" src="__ROOT__/Public/Home/images/head.png">
             <p class="marker">用户满意，极致如一；持续创新，只做第一；坚持到底，言行合一。</p>
             <div class="tips">
                 <p>李元从小在北京大院里长大，酷爱收养流浪猫狗，与各种宠物为伴，宠物已经成为他重要的家庭成员，是他的兄弟，是他的孩子也是他的生活中必不可少的伴侣为它</p>
@@ -154,7 +154,7 @@
                 <p>构，培养全新、现代、时尚的宠物消费习惯，开启智能养宠生活的2.0时代。</p>
             </div>
         </div>
-        <img class="bgimg" src="/Public/Home/images/bg-baner.jpg">
+        <img class="bgimg" src="__ROOT__/Public/Home/images/bg-baner.jpg">
     </div>
     <div class="news" id="news">
         <div class="title">
@@ -162,41 +162,20 @@
                 <br /><span>RECENT EVENTS AND NEWS</span></div>
         </div>
         <div class="span9">
-            <!-- Contents
-            ================================================== -->
             <section id="contents">
-                <article:list name="article" category="1" child="true">
-                    <div class="">
-                        <h3><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></h3>
-                    </div>
-                    <!--<div>
-                        <p class="lead">{$article.description}</p>
-                    </div>
-                    <div>
-                        <span><a href="{:U('Article/detail?id='.$article['id'])}">查看全文</a></span>
-                        <span class="pull-right">
-                            <span class="author">{$article.uid|get_username}</span>
-                            <span>于 {$article.create_time|date='Y-m-d H:i',###}</span> 发表在 <span>
-                            <a href="{:U('Article/lists?category='.get_category_name($article['category_id']))}">{$article.category_id|get_category_title}</a></span> ( 阅读：{$article.view} )
-                        </span>
-                    </div>-->
-                    <hr/>
-                </article:list>
-
+                <hr/>
+                <empty name="lists">
+                    <span>暂时没有新的信息</span>
+                    <else />
+                    <article:list name="article" category="1" child="true">
+                        <div class="">
+                            <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a>
+                        </div>
+                        <hr/>
+                    </article:list>
+                </empty>
             </section>
         </div>
-        <volist name="new_list" id="vo" empty="暂时没有新动态哦">
-            <div class="news-list">
-                <div class="date">
-                    <p>{$vo.day}<span>{$vo.month}月</span></p>
-                </div>
-                <div class="test">
-                    <div class="tit">{$vo.title}</div>
-                    <p>{$vo.content}</p>
-                </div>
-                <a target="_blank" href="{:U('Index/news?id='.$vo['id'])}">查看详情</a>
-            </div>
-        </volist>
     </div>
     <div class="recruiting" id="recruiting">
         <s></s>
@@ -219,23 +198,26 @@
             <div class="brand">联系我们
                 <br /><span>CONTACT US</span></div>
         </div>
-        <input type="text" name="name" class="name" placeholder="请输入您的姓名">
-        <input type="text" name="name" class="phone" placeholder="请输入您的电话">
-        <input type="text" name="name" class="email" placeholder="请输入您的电子邮箱">
-        <textarea class="notes" placeholder="请在次输入留言内容，我们会尽快与您联系"></textarea>
-        <input type="submit" class="submit" value="提交">
+
+            <input type="text" name="name" class="name" placeholder="请输入您的姓名">
+            <input type="text" name="phone" class="phone" placeholder="请输入您的电话">
+            <input type="text" name="email" class="email" placeholder="请输入您的电子邮箱">
+            <textarea class="notes" name="notes" placeholder="请在次输入留言内容，我们会尽快与您联系"></textarea>
+            <input type="submit" class="submit" value="提交">
+
+
     </div>
     <div class="footer">
         <div class="box-size">
             <div class="fl">
-                <img src="/Public/Home/images/logos.png">
+                <img src="__ROOT__/Public/Home/images/logos.png">
                 <div class="address">
                     <p>地址：北京市朝阳区西坝河南路甲1号新天第家园B座1206</p>
                     <p>电话：4000407278</p>
                 </div>
             </div>
             <div class="fr">
-                <img src="/Public/Home/images/weibo.jpg">
+                <img src="__ROOT__/Public/Home/images/weibo.jpg">
                 <p>官方微博</p>
             </div>
         </div>
@@ -244,7 +226,7 @@
 </div>
 <div class="bg"></div>
 <div class="rting-main" class="flexslider1">
-    <img class="close" src="/Public/Home/images/close.png">
+    <img class="close" src="__ROOT__/Public/Home/images/close.png">
     <ul class="r-nav">
         <li class="on">北京</li>
         <li>上海</li>
@@ -265,9 +247,9 @@
 <!--<p style="font-size: 30px;">网站维护中.....</p>-->
 
 <!-- </body> -->
-<script src="/Public/Home/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Public/Home/js/jquery.flexslider.min.js"></script>
-<script src="/Public/Home/js/index.js"></script>
+<script src="__ROOT__/Public/Home/js/jquery.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/Home/js/jquery.flexslider.min.js"></script>
+<script src="__ROOT__/Public/Home/js/index.js"></script>
 <script>
     //$('p').css({'height':$(window).height(),'line-height':$(window).height()+'px'})
     //chinaPet.init(0);

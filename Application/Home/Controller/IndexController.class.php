@@ -30,4 +30,35 @@ class IndexController extends HomeController {
         $this->display();
     }
 
+    /*首页 联系我们 by zjw*/
+    public function contact(){
+        $post  = I('post.');
+        if(empty($post['name']) ){
+            echo "信息不完整";die;
+        }
+        if(empty($post['phone']) ){
+            echo '信息不完整';die;
+        }
+        if(empty($post['email']) ){
+
+            echo '信息不完整';die;
+        }
+        if(empty($post['notes']) ){
+            echo '信息不完整';die;
+        }
+        $post['time'] = time();
+        $Model = D('notes');
+        if($Model->add($post)) {
+            $data['code']='succes';
+            $data['msg']='提交成功';
+            echo '提交成功';die;
+        }else{
+            $data['code']='error';
+            $data['msg']='提交失败';
+            echo '提交失败';die;
+        }
+
+
+    }
+
 }

@@ -84,29 +84,32 @@ var chinaPet = (function (){
 				//$('.email').css({'border':'1px solid red'});
 				return false;
 			}
+			if($('.notes').val() == ''){
+				alert('内容不能为空');
+				//$('.email').css({'border':'1px solid red'});
+				return false;
+			}
 			$.ajax({
 					type: "post",
-					url: "/index.php?s=/Home/Index/contact",
+					url: 'index.php?s=/Home/Index/contact',
 					data:{
 					'name':$('.name').val(),
-					'mobile':$('.phone').val(),
+					'phone':$('.phone').val(),
 					'email':$('.email').val(),
 					'notes':$('.notes').val()
 				},
-			   dataType: "json", 
-			   beforeSend:function(XMLHttpRequest){
-				  $('.cover').show();
-			   },
-			   success: function (data) {
-				   if(data.status == 1){
-					   alert('添加成功');
-					  window.location.href='.';
-				   }
-					console.log(data);
-			   },error: function (XMLHttpRequest, textStatus, errorThrown) { 
-				  $('.cover').hide();
-				  alert('网络错误，请重试')
-			   } 
+				dataType:'text',
+				success:function (result) {
+					if (result = '提交成功'){
+						alert(result);
+					window.location.href = '.';
+				}else {
+						alert(result);
+					}
+				},
+				error:function () {
+					alert('提交失败,稍后重新提交');
+				}
 			  });
 		}
 		return {
