@@ -41,7 +41,7 @@ use Common\Controller\Addon;
             $this->assign('addons_config', $config);
             $Model = D('notes');
             if($config['display']) {
-                $data = $Model->where('status=0')->order('time desc')->limit(50)->select();
+                $data = $Model->where('status=0')->order('time desc')->select();
                 foreach ($data as $k=>$v){
                     $data[$k]['time'] = date("Y-m-d H:i", $v['time']);
                 }
